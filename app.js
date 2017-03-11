@@ -11,20 +11,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   // The signed-in user info.
   user = result.user;
 
-  if (user != null) {
-  name = user.displayName;
-  email = user.email;
-  photoUrl = user.photoURL;
-  emailVerified = user.emailVerified;
-  uid = user.uid; 
-  }
-
   location.replace("testmap.html");
-
-  userRef.child("Name").set(name);
-  userRef.child("Email").set(email);
-  userRef.child("PhotoUrl").set(photoUrl);
-  userRef.child("UserId").set(uid);
 
   // ...
 }).catch(function(error) {
@@ -39,3 +26,13 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   console.log(error);
 });
 }
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid; 
+  }
+
+console.log(name);
