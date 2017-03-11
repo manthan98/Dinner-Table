@@ -40,8 +40,8 @@
           <a href="#" class="brand-logo"><bold>dinnerTable</bold></a>
           <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#About target">Notifications</a></li>
-            <li><a href="#Projects target">User</a></li>
+            <li><a href="#About target"><span>Notifications</span></a></li>
+            <li><a href="#Projects target"><span id= "userbtn">User</span></a></li>
           </ul>
         </div>
       </nav>
@@ -253,5 +253,22 @@ $('#btnaddmarker').on('click', function() {
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUTSln2dGHS123WS2O0pUNLcfLrpHsuuY&callback=initMap">
     </script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC68o4gKG7P-7GjwWspuBFZG1eBtAoV44Y",
+    authDomain: "dinnertable-757a0.firebaseapp.com",
+    databaseURL: "https://dinnertable-757a0.firebaseio.com",
+    storageBucket: "dinnertable-757a0.appspot.com",
+    messagingSenderId: "125265982403"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+</script>
+ <script type="text/javascript" src="app.js"></script>
   </body>
 </html>

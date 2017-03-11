@@ -10,6 +10,11 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var token = result.credential.accessToken;
   // The signed-in user info.
   user = result.user;
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;
 
   location.replace("testmap.html");
 
@@ -27,12 +32,15 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
 });
 }
 
-if (user != null) {
-  name = user.displayName;
-  email = user.email;
-  photoUrl = user.photoURL;
-  emailVerified = user.emailVerified;
-  uid = user.uid; 
-  }
+document.getElementById("userbtn").innerHTML = name;
 
-console.log(name);
+/*
+function addEvent(){
+	uid;
+	eventName;
+	location;
+	var eventref = firebase.database().ref();
+
+
+}
+*/
