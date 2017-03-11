@@ -1,5 +1,8 @@
 var provider = new firebase.auth.GoogleAuthProvider();
 var user;
+var name, email, photoUrl, uid, emailVerified;
+
+var userref = firebase.database().ref();
 
 function signInGoogle(){
 firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -7,7 +10,22 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var token = result.credential.accessToken;
   // The signed-in user info.
   user = result.user;
+
+  if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid; 
+  }
+
   location.replace("testmap.html");
+
+  userRef.child("Name").set(name);
+  userRef.child("Email").set(email);
+  userRef.child("PhotoUrl").set(photoUrl);
+  userRef.child("UserId").set(uid);
+
   // ...
 }).catch(function(error) {
   // Handle Errors here.
