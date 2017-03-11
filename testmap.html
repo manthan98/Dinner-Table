@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>dinnerTable</title>
+
+    <head>
+      <meta charset="UTF-8">
+      <title>dinnerTable</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'>
+</head>
+
     <style>
       #map {
         height: 400px;
         width: 100%;
        }
+
+       .h1 {
+         font-weight: 200;
+       }
+
+       .brand-logo {
+         margin-left: 10px;
+       }
     </style>
-  </head>
-  <body>
-    <h3>What's on my dinnerTable?</h3>
-    <div id="map"></div> 
-    <h9> <div id="buttonbar" class="mine">
-    <button id="btnlabels">hide/show labels</button>
-    <button id="btnaddmarker">add marker</button>
-    <button id="btnoffset">offset -100px</button>
-    <input id="nptsearch" type="text" placeholder="autocomplete test (BRazil)" />
-</div></h9>
+
+  <body class = "grey lighten-3">
+    <div class = "navbar-fixed">
+      <nav>
+        <div class="nav-wrapper deep-orange lighten-3">
+          <a href="#" class="brand-logo"><bold>dinnerTable</bold></a>
+          <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#About target">Notifications</a></li>
+            <li><a href="#Projects target">User</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <h1 class="center">What's on your dinnerTable?</h1>
+    </div>
+      <div id="map"></div>
+      <h9>
+        <div id="buttonbar" class="mine">
+        <button id="btnlabels">hide/show labels</button>
+        <button id="btnaddmarker">add marker</button>
+        <button id="btnoffset">offset -100px</button>
+        <input id="nptsearch" type="text" placeholder="autocomplete test (BRazil)" />
+        </div>
+      </h9>
 <h10>
 <div id="map_go" class="mine"></div>
+
 <script>
 
 directionsService = new google.maps.DirectionsService();
@@ -168,14 +211,14 @@ $('#btnoffset').on('click', function() {
 
 $('#btnaddmarker').on('click', function() {
     addmarker(SCH)
-}) 
+})
 
 </script>
 <script>
 
     function placeMarker(location) {
     var marker = new google.maps.Marker({
-        position: location, 
+        position: location,
         map: map
     });
 }
@@ -205,8 +248,8 @@ $('#btnaddmarker').on('click', function() {
         map: map
 });
       }
-    </script> 
-    
+    </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUTSln2dGHS123WS2O0pUNLcfLrpHsuuY&callback=initMap">
     </script>
