@@ -36,19 +36,38 @@ var EventForm = document.getElementById("EventForm");
 
 
 function writeEvent(){
+    var EventRef = firebase.database().ref();
+	EventRef.push().set({
+		Description: EventForm.description.value,
+		FoodType: EventForm.foodType.value,
+		Poster: name
+    Location: EventForm.address.value,
+	});
+
+  function geocodeAddress(geocoder, resultsMap) {
+    var address = Location;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+    /*
 	var EventRef = firebase.database().ref();
 	EventRef.child("Description").set(EventForm.description.value);
 	EventRef.child("FoodType").set(EventForm.foodType.value);
 	EventRef.child("Poster").set(name);
-
+	*/
 }
 
-if (user != null){
-	document.getElementById("userbtn").innerHTML = name;
-	document.getElementById("userbtn2").innerHTML = name;
-	document.getElementById("username").innerHTML = name;
-	document.getElementById("profilepicture").src = photoUrl;
-}
-
-
-
+document.getElementById("userbtn").innerHTML = name;
+document.getElementById("userbtn2").innerHTML = name;
+document.getElementById("username").innerHTML = name;
+document.getElementById("profilepicture").src = photoUrl;
