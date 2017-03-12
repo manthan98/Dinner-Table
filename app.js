@@ -33,14 +33,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
 }
 
 document.getElementById("userbtn").innerHTML = name;
-
-/*
-function addEvent(){
-	uid;
-	eventName;
-	location;
-	var eventref = firebase.database().ref();
+document.getElementById("username").innerHTML = name;
+document.getElementById("profilepicture").src = photoUrl;
 
 
-}
-*/
