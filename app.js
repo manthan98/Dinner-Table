@@ -40,7 +40,6 @@ function writeEvent(){
 	EventRef.child("Description").set(EventForm.description.value);
 	EventRef.child("FoodType").set(EventForm.foodType.value);
 	EventRef.child("Poster").set(name);
-
 }
 
 document.getElementById("userbtn").innerHTML = name;
