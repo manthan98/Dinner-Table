@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geocoding service</title>
+    <title>dinnerTable</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -33,8 +33,17 @@
         line-height: 30px;
         padding-left: 10px;
       }
+
       .wrapper {
         margin-top: 100vh;
+      }
+
+      .fontyWeighter {
+        font-weight: 200;
+      }
+
+      .brand-logo {
+        margin-left: 10px;
       }
     </style>
 
@@ -54,33 +63,33 @@
     <div class = "navbar-fixed">
       <nav>
         <div class="nav-wrapper deep-orange lighten-3">
-          <a href="#" class="brand-logo"><bold>dinnerTable</bold></a>
+          <a href="#" class="brand-logo" id="target3">dinnerTable</a>
           <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#About target"><span>Notifications</span></a></li>
-            <li><a href="userPage.html"><span id= "userbtn">User</span></a></li>
+            <li><a href="#About target" id="target1"><span>Notifications</span></a></li>
+            <li><a href="userPage.html" id="target2"><span id= "userbtn">User</span></a></li>
           </ul>
         </div>
       </nav>
     </div>
 
     <div class="container">
-      <h1 class="center">What's on your dinnerTable?</h1>
+      <h1 class="center fontyWeighter">What's on your dinnerTable?</h1>
     </div>
       <div id="map"></div>
-    <div id="map"></div>
+    <!--<div id="map"></div>-->
 
     <div class="row">
       <div class="col s4">
     <div class="center wrapper" id="floating-panel">
-
       <form action="#" id="EventForm">
+         <h1 class="center fontyWeighter">Add your own event</h1>
 
             <input class="mdl-textfield__input" placeholder="address" type="text" id="address"/>
 
             <input class="mdl-textfield__input" placeholder = "description" type="text" id="description"/>
 
-            <input class="mdl-textfield__input" placeholder = "foodType" type="text" id="foodType"/>
+            <input class="mdl-textfield__input" placeholder = "Type of food" type="text" id="foodType"/>
 
           <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="submit" onclick="writeEvent()">Add Event</button>
 
@@ -113,8 +122,12 @@
               position: results[0].geometry.location
             });
 
+            var infoOne = document.getElementById('address').value.toString();
+            var infoTwo = document.getElementById('description').value.toString();
+            var infoThree = document.getElementById('foodType').value.toString();
+
             var infowindow = new google.maps.InfoWindow({
-				  content: 'test'
+				  content: 'Location: ' + infoOne + '<br />' + 'Description: ' + infoTwo + '<br />' + 'Food Type: ' + infoThree
 				});
 				makeInfoWindowEvent(map, infowindow, marker);
 
@@ -156,5 +169,15 @@
 <script src="https://apis.google.com/js/platform.js" async defer>
 </script>
  <script type="text/javascript" src="app.js"></script>
+
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+
+ <script>
+ $(document).ready(function() {
+   $("#target1, #target2, #target3").css("color", "black");
+ });
+ </script>
   </body>
 </html>
