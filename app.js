@@ -32,6 +32,17 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
 });
 }
 
+var EventForm = document.getElementById("EventForm");
+
+
+function writeEvent(){
+	var EventRef = firebase.database().ref();
+	EventRef.child("Description").set(EventForm.description.value);
+	EventRef.child("FoodType").set(EventForm.foodType.value);
+	EventRef.child("Poster").set(name);
+
+}
+
 document.getElementById("userbtn").innerHTML = name;
 document.getElementById("username").innerHTML = name;
 document.getElementById("profilepicture").src = photoUrl;

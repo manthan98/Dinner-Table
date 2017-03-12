@@ -33,10 +33,20 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input id="address" type="textbox" value="Enter Location">
-      <input id="description" type="textbox" value="Enter Description">
-      <input id="foodType" type="textbox" value="Enter Type of Food">
-      <input id="submit" type="button" value="Add Event!">
+
+      <form action="#" id="EventForm">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder="address" type="text" id="address"/>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder = "description" type="text" id="description"/>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder = "foodType" type="text" id="foodType"/>
+          </div>
+          <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="submit" onclick="writeEvent()">Add Event</button>
+        </form>
+
     </div>
     <div id="map"></div>
     <script>
@@ -70,5 +80,22 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUTSln2dGHS123WS2O0pUNLcfLrpHsuuY&callback=initMap">
     </script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC68o4gKG7P-7GjwWspuBFZG1eBtAoV44Y",
+    authDomain: "dinnertable-757a0.firebaseapp.com",
+    databaseURL: "https://dinnertable-757a0.firebaseio.com",
+    storageBucket: "dinnertable-757a0.appspot.com",
+    messagingSenderId: "125265982403"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+</script>
+ <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
