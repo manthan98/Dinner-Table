@@ -71,17 +71,36 @@ function writeEvent(){
 	*/
 }
 
+var userv1 = document.getElementById("userbtn")
 var userv2 = document.getElementById("userbtn2");
 var uname = document.getElementById("username");
+var ppic = document.getElementById("profilepicture");
 
-document.getElementById("userbtn").innerHTML = name;
-if(userv2.innerHTML != null){
-    userv2.innerHTML = name;
+if (name == "Austin Atmaja"){
+    photoUrl = "https://s-media-cache-ak0.pinimg.com/avatars/austinatmaja_1436759468_140.jpg";
 }
-if (uname.innerHTML != null){
-    uname.innerHTML = name;
+if (name == "David Zhang"){
+    photoUrl = "https://s15.postimg.org/4b1mme9ij/AAEAAQAAAAAAAAcz_AAAAJDM2_MDY0_YWMx_LWM5_MWEt_NDNl_YS1i.jpg";
 }
-document.getElementById("profilepicture").src = photoUrl;
+if (name == "Manthan Shah"){
+    photoUrl = "https://uwaterloo.ca/engineering-student-ambassadors/sites/ca.engineering-student-ambassadors/files/resize/uploads/images/manthan_shah_0-220x300.jpg";
+}
+if (name == "Daniel Javaheri-Zadeh"){
+    photoUrl = "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAe6AAAAJDlmMTZkM2UxLTE4MDItNGVlNC04OTI0LWE5NDQ5MTc5MDU3Nw.jpg";
+}
+
+if (userv1 != null){
+  userv1.innerHTML = name;
+}
+if (userv2 != null){
+  userv2.innerHTML = name;
+}
+if(uname != null){
+  uname.innerHTML = name;
+}
+if(ppic != null){
+    ppic.src = photoUrl;
+}
 
 var poster;
 var loc;
