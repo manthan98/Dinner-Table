@@ -41,7 +41,7 @@
           <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#About target">Notifications</a></li>
-            <li><a href="#Projects target">User</a></li>
+            <li><a href="userPage.html">User</a></li>
           </ul>
         </div>
       </nav>
@@ -50,9 +50,9 @@
       <div class="col s3">
       <br></br>
       <center>
-      <img src="profile.JPG" alt="Profile Picture" style="width:80%;height:85%;">
+      <img id = "profilepicture"; src="profile.JPG" alt="Profile Picture" style="width:80%;height:85%;">
       <link rel="stylesheet" type="text/css" href="linespace.css">
-      <p class = "small"> <font size = "2">  <b> Username: dzhang676 </b> </font></p>
+      <p class = "small"> <font size = "2">  <b> <span id="username"> Username: dzhang676 </span> </b> </font></p>
 	  <p class = "small">  <font size = "2"><b> Rank: Food Explorer </b></font></p>
 	  <p class = "small">  <font size = "2"><b> Give me free food nom nom nom </b></font></p>
 	  <p class = "small">  <font size = "2"><b> Badge: </b></font></p>
@@ -216,13 +216,6 @@
   </div>
 </form>
 
-
-
-
-
-
-
-
 </div>	
 
       </div>
@@ -230,5 +223,24 @@
 
 </div>
 </div>
+
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC68o4gKG7P-7GjwWspuBFZG1eBtAoV44Y",
+    authDomain: "dinnertable-757a0.firebaseapp.com",
+    databaseURL: "https://dinnertable-757a0.firebaseio.com",
+    storageBucket: "dinnertable-757a0.appspot.com",
+    messagingSenderId: "125265982403"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+</script>
+ <script type="text/javascript" src="app.js"></script>
+
+
   </body>
 </html>
