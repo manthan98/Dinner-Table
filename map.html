@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 70%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'>
+
+
+
+  </head>
+  <body>
+
+   <body class = "grey lighten-3">
+    <div class = "navbar-fixed">
+      <nav>
+        <div class="nav-wrapper deep-orange lighten-3">
+          <a href="#" class="brand-logo"><bold>dinnerTable</bold></a>
+          <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#About target"><span>Notifications</span></a></li>
+            <li><a href="userPage.html"><span id= "userbtn">User</span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <h1 class="center">What's on your dinnerTable?</h1>
+    </div>
+      <div id="map"></div>
+      <h9>
+        <div id="buttonbar" class="mine">
+        <button id="btnlabels">hide/show labels</button>
+        <button id="btnaddmarker">add marker</button>
+        <button id="btnoffset">offset -100px</button>
+        <input id="nptsearch" type="text" placeholder="autocomplete test (BRazil)" />
+        </div>
+      </h9>
+
+
+    <div id="floating-panel">
+
+      <form action="#" id="EventForm">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder="address" type="text" id="address"/>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder = "description" type="text" id="description"/>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" placeholder = "foodType" type="text" id="foodType"/>
+          </div>
+          <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="submit" onclick="writeEvent()">Add Event</button>
+        </form>
+
+    </div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: 43.472180, lng: -80.544686}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUTSln2dGHS123WS2O0pUNLcfLrpHsuuY&callback=initMap">
+    </script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC68o4gKG7P-7GjwWspuBFZG1eBtAoV44Y",
+    authDomain: "dinnertable-757a0.firebaseapp.com",
+    databaseURL: "https://dinnertable-757a0.firebaseio.com",
+    storageBucket: "dinnertable-757a0.appspot.com",
+    messagingSenderId: "125265982403"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+</script>
+ <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
