@@ -6,8 +6,8 @@
     <head>
       <meta charset="UTF-8">
       <title>dinnerTable</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
- 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,11 +23,9 @@
         height: 400px;
         width: 100%;
        }
-
        .h1 {
          font-weight: 200;
        }
-
        .brand-logo {
          margin-left: 10px;
        }
@@ -41,7 +39,7 @@
           <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#About target"><span>Notifications</span></a></li>
-            <li><a href="userPage.html"><span id= "userbtn">User</span></a></li>
+            <li><a href="#Projects target"><span id= "userbtn">User</span></a></li>
           </ul>
         </div>
       </nav>
@@ -63,59 +61,46 @@
 <div id="map_go" class="mine"></div>
 
 <script>
-
 directionsService = new google.maps.DirectionsService();
 directionsDisplay = new google.maps.DirectionsRenderer();
-
 var DP = new google.maps.LatLng(43.4693355, -80.54245);
 var SCH = new google.maps.LatLng(43.46838, -80.5388175);
-
 var noStreetNames = [{
     featureType: "road",
     elementType: "labels",
     stylers: [{
         visibility: "off"}]}];
-
 hideLabels = new google.maps.StyledMapType(noStreetNames, {
     name: "hideLabels"
 });
-
-
 var myOptions = {
     zoom: 1,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: DP
 }
-
 var showPosition = function(position) {
     var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
     var marker = new google.maps.Marker({
         position: userLatLng,
         title: 'Your Location',
         draggable: true,
         map: map
     });
-
     var infowindow = new google.maps.InfoWindow({
         content: '<div id="infodiv" style="width: 300px">300px wide infowindow!  if the mouse is not here, will close after 3 seconds</div>'
     });
-
     google.maps.event.addListener(marker, 'dragend', function() {
         infowindow.open(map, marker)
         map.setCenter(marker.getPosition())
     });
-
     google.maps.event.addListener(marker, 'mouseover', function() {
         infowindow.open(map, marker)
     });
-
     google.maps.event.addListener(marker, 'mouseout', function() {
         t = setTimeout(function() {
             infowindow.close()
         }, 3000);
     });
-
     google.maps.event.addListener(infowindow, 'domready', function() {
         $('#infodiv').on('mouseenter', function() {
             clearTimeout(t);
@@ -125,12 +110,9 @@ var showPosition = function(position) {
             }, 1000);
         })
     });
-
     var input = document.getElementById('nptsearch');
     var autocomplete = new google.maps.places.Autocomplete(input);
-
     autocomplete.bindTo('bounds', map);
-
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         infowindow.close();
         var place = autocomplete.getPlace();
@@ -140,42 +122,30 @@ var showPosition = function(position) {
             map.setCenter(place.geometry.location);
             map.setZoom(7);
         }
-
         var image = new google.maps.MarkerImage(
         place.icon, new google.maps.Size(71, 71), new google.maps.Point(0, 0), new google.maps.Point(17, 34), new google.maps.Size(35, 35));
         marker.setIcon(image);
         marker.setPosition(place.geometry.location);
-
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
         infowindow.open(map, marker);
     });
-
     map.setCenter(marker.getPosition());
 }
-
 navigator.geolocation.getCurrentPosition(showPosition);
-
 map = new google.maps.Map(document.getElementById("map_go"), myOptions);
 directionsDisplay.setMap(map);
-
 map.mapTypes.set('hide_street_names', hideLabels);
-
 function offsetCenter(latlng, offsetx, offsety) {
     var scale = Math.pow(2, map.getZoom());
     var nw = new google.maps.LatLng(
     map.getBounds().getNorthEast().lat(), map.getBounds().getSouthWest().lng());
-
     var worldCoordinateCenter = map.getProjection().fromLatLngToPoint(latlng);
     var pixelOffset = new google.maps.Point((offsetx / scale) || 0, (offsety / scale) || 0)
-
     var worldCoordinateNewCenter = new google.maps.Point(
     worldCoordinateCenter.x - pixelOffset.x, worldCoordinateCenter.y + pixelOffset.y);
-
     var newCenter = map.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
-
     map.setCenter(newCenter);
 }
-
 function addmarker(latilongi) {
     var marker = new google.maps.Marker({
         position: latilongi,
@@ -183,7 +153,6 @@ function addmarker(latilongi) {
         draggable: true,
         map: map
     });
-
     var infowindow = new google.maps.InfoWindow({
         content: '<div id="infodiv2">infowindow!</div>'
     });
@@ -191,31 +160,25 @@ function addmarker(latilongi) {
     map.setCenter(marker.getPosition())
     infowindow.open(map, marker)
 }
-
 $(window).on('resize', function() {
     var currCenter = map.getCenter();
     google.maps.event.trigger(map, 'resize');
     map.setCenter(currCenter);
 })
-
 $('#btnlabels').toggle(function() {
     map.setZoom(15);
     map.setMapTypeId('hide_street_names')
 }, function() {
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
 })
-
 $('#btnoffset').on('click', function() {
     offsetCenter(map.getCenter(), 0, -100)
 })
-
 $('#btnaddmarker').on('click', function() {
     addmarker(SCH)
 })
-
 </script>
 <script>
-
     function placeMarker(location) {
     var marker = new google.maps.Marker({
         position: location,

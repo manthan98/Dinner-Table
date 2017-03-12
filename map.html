@@ -61,12 +61,19 @@
 
    <body class = "grey lighten-3">
     <div class = "navbar-fixed">
+        <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!"><span id = "notifone"></span></a></li>
+  <li><a href="#!"><span id = "notiftwo"></span></a></li>
+  <li><a href="#!"><span id = "notifthree"></span></a></li>
+</ul>
       <nav>
         <div class="nav-wrapper deep-orange lighten-3">
-          <a href="#" class="brand-logo" id="target3">dinnerTable</a>
+          <a href="#" class="brand-logo" id="target3"><img src="https://s12.postimg.org/cbngj2d59/17270897_1134180766708922_910918553_n.jpg"></a>
           <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#About target" id="target1"><span>Notifications</span></a></li>
+              <li><a class="dropdown-button" href="#!" data-activates="dropdown1" href="#About target" id="target1"><span id = "notiftext" onclick="decNotif()">Notifications: 5</span><i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="#About target" id="target1"><span>Redeem</span></a></li>
             <li><a href="userPage.html" id="target2"><span id= "userbtn">User</span></a></li>
           </ul>
         </div>
@@ -177,6 +184,7 @@
  <script>
  $(document).ready(function() {
    $("#target1, #target2, #target3").css("color", "black");
+   $(".dropdown-button").dropdown();
  });
  </script>
   </body>
