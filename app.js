@@ -16,7 +16,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   emailVerified = user.emailVerified;
   uid = user.uid;
 
-  location.replace("testmap.html");
+  location.replace("map.html");
 
   // ...
 }).catch(function(error) {
