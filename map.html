@@ -5,9 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
- 
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -32,6 +32,10 @@
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
+      }
+
+      .wrapper {
+        margin-top: 100vh;
       }
     </style>
 
@@ -65,33 +69,28 @@
       <h1 class="center">What's on your dinnerTable?</h1>
     </div>
       <div id="map"></div>
-      <h9>
-        <div id="buttonbar" class="mine">
-        <button id="btnlabels">hide/show labels</button>
-        <button id="btnaddmarker">add marker</button>
-        <button id="btnoffset">offset -100px</button>
-        <input id="nptsearch" type="text" placeholder="autocomplete test (BRazil)" />
-        </div>
-      </h9>
+    <div id="map"></div>
 
-
-    <div id="floating-panel">
+    <div class="row">
+      <div class="col s4">
+    <div class="center wrapper" id="floating-panel">
 
       <form action="#" id="EventForm">
-          <div class="mdl-textfield mdl-js-textfield">
+
             <input class="mdl-textfield__input" placeholder="address" type="text" id="address"/>
-          </div>
-          <div class="mdl-textfield mdl-js-textfield">
+
             <input class="mdl-textfield__input" placeholder = "description" type="text" id="description"/>
-          </div>
-          <div class="mdl-textfield mdl-js-textfield">
+
             <input class="mdl-textfield__input" placeholder = "foodType" type="text" id="foodType"/>
-          </div>
+
           <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="submit" onclick="writeEvent()">Add Event</button>
+
         </form>
 
     </div>
-    <div id="map"></div>
+    </div>
+    </div>
+
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -120,9 +119,13 @@
         });
       }
     </script>
+
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUTSln2dGHS123WS2O0pUNLcfLrpHsuuY&callback=initMap">
     </script>
+
+  </div>
 
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
