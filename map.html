@@ -91,6 +91,7 @@
     </div>
 
     <script>
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
@@ -101,6 +102,7 @@
           geocodeAddress(geocoder, map);
         });
       }
+
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
@@ -110,11 +112,25 @@
               map: resultsMap,
               position: results[0].geometry.location
             });
+
+            var infowindow = new google.maps.InfoWindow({
+				  content: 'test'
+				});
+				makeInfoWindowEvent(map, infowindow, marker);
+
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
         });
       }
+
+      function makeInfoWindowEvent(map, infowindow, marker) {
+			  google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, marker);
+			  });
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
 
