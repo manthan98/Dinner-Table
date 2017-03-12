@@ -33,7 +33,6 @@
         line-height: 30px;
         padding-left: 10px;
       }
-
       .wrapper {
         margin-top: 100vh;
       }
@@ -98,12 +97,10 @@
           center: {lat: 43.472180, lng: -80.544686}
         });
         var geocoder = new google.maps.Geocoder();
-
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
       }
-
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
