@@ -40,10 +40,15 @@ function writeEvent(){
 	EventRef.child("Description").set(EventForm.description.value);
 	EventRef.child("FoodType").set(EventForm.foodType.value);
 	EventRef.child("Poster").set(name);
+
 }
 
-document.getElementById("userbtn").innerHTML = name;
-document.getElementById("username").innerHTML = name;
-document.getElementById("profilepicture").src = photoUrl;
+if (user != null){
+	document.getElementById("userbtn").innerHTML = name;
+	document.getElementById("userbtn2").innerHTML = name;
+	document.getElementById("username").innerHTML = name;
+	document.getElementById("profilepicture").src = photoUrl;
+}
+
 
 
